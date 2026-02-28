@@ -1,0 +1,102 @@
+{
+  "name": "vscode-bmad",
+  "displayName": "BMAD Method",
+  "description": "VS Code extension for BMAD Method project management",
+  "version": "0.0.1",
+  "publisher": "bmad",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "bmad-container",
+          "title": "BMAD Method",
+          "icon": "media/bmad-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "bmad-container": [
+        {
+          "type": "webview",
+          "id": "bmad-sidebar",
+          "name": "BMAD"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "bmad.helloWorld",
+        "title": "BMAD: Hello World"
+      },
+      {
+        "command": "vscode-bmad.initProject",
+        "title": "Start New BMAD Project",
+        "icon": "$(rocket)"
+      },
+      {
+        "command": "vscode-bmad.refreshSidebar",
+        "title": "BMAD: Refresh Sidebar",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "bmad.openKanban",
+        "title": "Open Kanban Board",
+        "category": "BMAD",
+        "icon": "$(preview)"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "bmad.openKanban",
+        "key": "ctrl+shift+k",
+        "mac": "cmd+shift+k"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "compile": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --sourcemap",
+    "watch:extension": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --sourcemap --watch",
+    "build:sidebar": "cd webviews/sidebar && vite build",
+    "build:kanban": "cd webviews/kanban && vite build",
+    "build:webviews": "npm run build:sidebar && npm run build:kanban",
+    "dev:sidebar": "cd webviews/sidebar && vite build --watch",
+    "dev:kanban": "cd webviews/kanban && vite build --watch",
+    "dev:webviews": "concurrently \"npm run dev:sidebar\" \"npm run dev:kanban\"",
+    "build": "npm run compile && npm run build:webviews",
+    "watch": "concurrently \"npm run watch:extension\" \"npm run dev:webviews\"",
+    "lint": "eslint src --ext ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^6.2.4",
+    "@tsconfig/svelte": "^5.0.7",
+    "@types/node": "^20.19.33",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "@vscode/webview-ui-toolkit": "^1.4.0",
+    "concurrently": "^9.2.1",
+    "esbuild": "^0.19.8",
+    "eslint": "^8.55.0",
+    "svelte": "^5.50.3",
+    "typescript": "^5.3.2",
+    "vite": "^7.3.1",
+    "vitest": "^4.0.18"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "yaml": "^2.8.2"
+  }
+}

@@ -1,0 +1,103 @@
+# generated: 2026-02-12
+# project: vscode-bmad
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: "{project-root}/_bmad-output/implementation-artifacts"
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog → in-progress: Automatically when first story is created (via create-story)
+#   - in-progress → done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story is created
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically creates next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+
+generated: 2026-02-12
+project: vscode-bmad
+project_key: NOKEY
+tracking_system: file-system
+story_location: "{project-root}/_bmad-output/implementation-artifacts"
+
+development_status:
+  # Epic 1: Extension Foundation & Project Detection
+  epic-1: in-progress
+  1-1-extension-project-setup: done
+  1-2-errorservice-implementation: done
+  1-3-configservice-basic-yaml-parsing: done
+  1-4-configservice-template-variable-resolution: done
+  1-5-extension-activation-with-bmad-detection: done
+  epic-1-retrospective: optional
+
+  # Epic 2: Project Initialization
+  epic-2: done
+  2-1-shell-detection-service: done
+  2-2-terminal-command-execution: done
+  2-3-project-init-button-in-sidebar: done
+  epic-2-retrospective: optional
+
+  # Epic 3: Sidebar Panel & Progressive UI
+  epic-3: in-progress
+  3-1-webview-build-pipeline-vite-svelte: review
+  3-2-shared-message-types: done
+  3-3-sidebarprovider-base-implementation: done
+  3-4-progressive-panel-fresh-project-state: done
+  3-5-progressive-panel-in-progress-state: done
+  3-6-progressive-panel-epics-ready-state: done
+  3-7-artifact-file-tree: done
+  epic-3-retrospective: optional
+
+  # Epic 4: File Parsing & State Management
+  epic-4: done
+  4-1-shared-data-models: done
+  4-2-parserservice-yaml-frontmatter-extraction: done
+  4-3-epicsparser-parse-epics-md-structure: done
+  4-4-storyparser-scan-and-parse-story-files: done
+  4-5-filewatcherservice-implementation: done
+  4-6-derived-epic-status: done
+  4-7-state-persistence-across-reloads: done
+  epic-4-retrospective: optional
+
+  # Epic 5: Kanban Board
+  epic-5: in-progress
+  5-1-kanbanprovider-base-implementation: done
+  5-2-kanban-column-layout: done
+  5-3-story-card-component: done
+  5-4-dual-view-tab-navigation: done
+  5-5-epic-card-component: done
+  5-6-story-card-click-markdown-preview: review
+  5-7-kanban-auto-refresh: review
+  5-8-workflow-progress-bar: review
+  5-9-epic-filter-in-stories-view: review
+  epic-5-retrospective: optional
+
+  # Epic 6: Agent Launcher & Workflow Guidance
+  epic-6: in-progress
+  6-1-agentparserservice-discover-agents: review
+  6-2-agentparserservice-parse-commands: review
+  6-3-agent-launcher-ui-component: review
+  6-4-copilotservice-chat-integration: review
+  6-5-model-selector-integration: review
+  6-6-custom-prompt-field: review
+  6-7-workflow-progress-tracker: review
+  epic-6-retrospective: optional
